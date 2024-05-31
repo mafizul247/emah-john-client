@@ -4,3 +4,22 @@
     position: sticky;
     top: 0;
 }
+
+.clear-cart {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px 20px;
+    background-color: rgb(241, 51, 51);
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.clear-cart .icon {
+    font-size: 20px;
+}

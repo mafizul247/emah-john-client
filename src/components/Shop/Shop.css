@@ -10,3 +10,26 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
+
+.btn-link {
+    text-decoration: none;
+}
+
+.btn-checkout {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: #ffa500;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn-checkout .icon {
+    font-size: 20px;
+}

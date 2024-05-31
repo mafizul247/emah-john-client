@@ -17,3 +17,7 @@
 .header a:hover {
     color: orange;
 }
+
+.header .active {
+    color: orange;
+}
