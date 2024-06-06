@@ -1,28 +1,35 @@
 import React, { useContext } from 'react';
-import './Login.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Providers/AuthProvider';
 
-const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+const SignUp = () => {
+    const { createUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-
-    const handleLogin = (event) => {
+    const from = location.state?.from?.pathname || '/';
+    const handleSignUp = (event) => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-        // console.log(email, password);
-        if (password.length < 6) {
-            toast.error('Passowrd length must be 6 charects');
+        const confirm = event.target.confirm.value;
+        // console.log(email, password, confirm);
+
+        if (password !== confirm) {
+            toast.error('Password & Confirm password does not match');
+            return;
+        } else if (password.length < 6) {
+            toast.error('Password must be more than 6 charecters');
             return;
         }
-        loginUser(email, password)
+
+        createUser(email, password)
             .then(result => {
                 const logedUser = result.user;
-                toast(`${logedUser.email} Login Successfully`);
+                console.log(logedUser);
+                toast(`${logedUser.email} Create Usaer Successfully`);
+                navigate(from, { replace: true });
             }).catch(error => {
                 console.log(error);
                 toast.error(error.message);
@@ -31,8 +38,8 @@ const Login = () => {
 
     return (
         <div className='login-contianer'>
-            <h2 className='form-title'>Please Login!</h2>
-            <form onSubmit={handleLogin}>
+            <h2 className='form-title'>Please Sign Up!</h2>
+            <form onSubmit={handleSignUp}>
                 <div className="form-control">
                     <label htmlFor="email">Email:</label>
                     <input type="text" name='email' placeholder='Entry your email' required />
@@ -41,10 +48,14 @@ const Login = () => {
                     <label htmlFor="passwrod">Passwrod:</label>
                     <input type="password" name='password' placeholder='Entry your password' />
                 </div>
-                <input className='submit-btn' type="submit" value="Login" required />
+                <div className="form-control">
+                    <label htmlFor="passwrod">Confirm Passwrod:</label>
+                    <input type="password" name='confirm' placeholder='Entry your confirm password' />
+                </div>
+                <input className='submit-btn' type="submit" value="Sign Up" required />
             </form>
             <div className='login-toggle'>
-                <p>New to Ema-john? <Link to='/signup' state={location.state}>Create New Account</Link> </p>
+                <p>Already Have an Account? <Link to='/login'>Please Login</Link> </p>
             </div>
             <hr />
             <SocialLogin />
@@ -52,4 +63,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;

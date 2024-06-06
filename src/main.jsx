@@ -9,6 +9,11 @@ import Inventory from './components/Inventory/Inventory.jsx'
 import Login from './components/Login/Login.jsx'
 import cartPorductLoader from './Loaders/cartProductsLoader.js'
 import Checkout from './components/Checkout/Checkout.jsx'
+import SignUp from './components/SignUp/SignUp'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import AuthProvider from './Providers/AuthProvider.jsx'
+import PrivateRoute from './Routes/PrivateRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -26,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'inventory',
-        element: <Inventory />
+        element: <PrivateRoute><Inventory /></PrivateRoute>
       },
       {
         path: 'checkout',
@@ -35,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />
+      },
+      {
+        path: 'signup',
+        element: <SignUp />
       }
     ]
   }
@@ -42,6 +51,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </AuthProvider>
   </React.StrictMode>,
 )
