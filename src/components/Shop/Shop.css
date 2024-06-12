@@ -33,3 +33,51 @@
 .btn-checkout .icon {
     font-size: 20px;
 }
+
+.pagination {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.pagination-btn {
+    padding: 10px 15px;
+    font-weight: 600;
+    background-color: #FFA500;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.pagination-btn:hover {
+    background-color: #008000;
+}
+
+.active {
+    padding: 10px 15px;
+    font-weight: 600;
+    background-color: #008000;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.seletPage {
+    padding: 10px 15px;
+    font-weight: 600;
+    background-color: #FFA500;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.seletPage:hover {
+    background-color: #008000;
+}
+
+
