@@ -5,13 +5,13 @@ import './Shop.css'
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../../utilities/fakedb';
-import { Link, useLoaderData, useLocation } from 'react-router-dom';
+import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const Shop = () => {
-    const location = useLocation();
-    if(location.state === 'loading') {
+    const navigation = useNavigation();
+    if(navigation.state === 'loading') {
         return <LoadingSpinner />
     }
     

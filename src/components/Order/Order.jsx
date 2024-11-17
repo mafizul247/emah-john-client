@@ -3,15 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWallet } from '@fortawesome/free-solid-svg-icons';
 import './Order.css';
 import Cart from '../Cart/Cart';
-import { Link, useLoaderData, useLocation } from 'react-router-dom';
+import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import ReviewItem from '../ReviewItem/ReviewItem';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import useTitle from '../../hooks/useTitle';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const Order = () => {
-    const location = useLocation();
-    if (location.state === 'loading') {
+    const navigation = useNavigation();
+    if (navigation.state === 'loading') {
         return <LoadingSpinner />
     }
     
